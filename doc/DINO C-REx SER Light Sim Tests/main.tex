@@ -1,0 +1,87 @@
+\documentclass[]{DINOReportMemo}
+\usepackage{DINO_C-REx}
+\usepackage{colortbl}
+
+
+\newcommand{\ModuleName}{Image Generation} %edit this!
+\newcommand{\subject}{Camera Object Unit Tests} %edit this!
+\newcommand{\status}{Initial Version}
+\newcommand{\preparer}{Matt Muszynski} %edit this!
+\newcommand{\summary}{Description of unit tests completed for the DINO C-REx camera object. This includes tests 4.18 through 4.25.} %edit this
+\usepackage{float}
+\usepackage{rotating}
+\usepackage{pdflscape}
+
+\begin{document}
+
+\makeCover
+
+
+%
+% enter the revision documentation here
+% to add more lines, copy the table entry and the \hline, and paste after the current entry.
+%
+\pagestyle{empty}
+{\renewcommand{\arraystretch}{2}
+\noindent
+\begin{longtable}{|p{0.5in}|p{4.5in}|p{1.14in}|}
+\hline
+{\bfseries Rev}: & {\bfseries Change Description} & {\bfseries By} \\
+\hline
+1.0 & Initial Release & Matt Muszynski \\ %edit this
+\hline
+
+\end{longtable}
+}
+
+\newpage
+\setcounter{page}{1}
+\pagestyle{fancy}
+
+\tableofcontents
+~\\ \hrule ~\\
+
+\newpage
+\section{Overview}\\\\
+This document describes all unit tests written for the light sim functions library by the DINO C-REx camera model team. Each function in the library has an associated test, and additional integrated tests are performed where deemed useful by the team. Each test has an entry in this document for status (including date of status change), responsible DINO C-REx team member, a qualitative description of the test performed and a brief technical discussion of the method employed in code to achieve the test.
+
+\section{Tests}
+\subsection{Test 4.20: lightSimFunctions.checkFOV()}
+\textbf{Status}: Incomplete. 10.31.17\\
+\textbf{Responsible Team Member}: Matt Muszynski \\
+\textbf{Description}: This test creates an image with several bodies in and out of the FOV and checks that they are handled appropriately. Some objects should be completely in view, some completely out of view, and still some should have their centers out of view but other portions in view.\\
+\textbf{Method}: \\
+
+\subsection{Test 4.21: lightSimFunctions.mapSphere()}
+\textbf{Status}: Incomplete. 10.31.17\\
+\textbf{Responsible Team Member}: Matt Muszynski \\
+\textbf{Description}: This test checks that the total number of sphere facets created by the function times the area of each vacet is equal to half the surface area of the spherical body.\\
+\textbf{Method}: \\
+
+\subsection{Test 4.22: lightSimFunctions.mapSphere()}
+\textbf{Status}: Incomplete. 10.31.17\\
+\textbf{Responsible Team Member}: Matt Muszynski \\
+\textbf{Description}: This test checks that the longitude and latitude coordinates computed are symmetic about the body's equator.\\
+\textbf{Method}: \\
+
+\subsection{Test 4.23: lightSimFunctions.lumos()}
+\textbf{Status}: Incomplete. 10.31.17\\
+\textbf{Responsible Team Member}: Matt Muszynski \\
+\textbf{Description}: This test ensures that the sum of the facet\_area array is exactly equal to the surface area of the half of the spherical body.\\
+\textbf{Method}: \\
+
+\subsection{Test 4.24: lightSimFunctions.lumos()}
+\textbf{Status}: Incomplete. 10.31.17\\
+\textbf{Responsible Team Member}: Matt Muszynski \\
+\textbf{Description}: This test compares the flux\_decay\_net array to a verified analytic solution. \\
+\textbf{Method}: \\
+
+\subsection{Test 4.25: lightSimFunctions.project2CamView()}
+\textbf{Status}: Incomplete. 10.31.17\\
+\textbf{Responsible Team Member}: Matt Muszynski \\
+\textbf{Description}: Compare the output variable facet\_area\_camview with the area of a circle with the same radius as the spherical body. \\
+\textbf{Method}: \\
+
+
+
+\end{document}
