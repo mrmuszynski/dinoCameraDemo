@@ -85,54 +85,7 @@ def Euler321_2DCM(psi,theta,phi):
 	from util import r1, r2, r3
 	return r1(phi).dot(r2(theta).dot(r3(psi)))
 
-# def MRP2DCM(sigma):
-# 	from numpy import array, identity
-# 	# sigma_tilde = tilde(sigma)
 
-# 	# C = identity(3) + 8*sigma_tilde.dot(sigma_tilde) - \
-# 	# 4*(1-sigma.dot(sigma))*sigma_tilde/(1 + sigma.dot(sigma))**2
-
-# 	# return C
-# 	sigsq = sigma.dot(sigma)
-# 	sig1 = sigma[0]
-# 	sig2 = sigma[1]
-# 	sig3 = sigma[2]
-# 	return array([
-# 		[
-# 		4*(sig1**2-sig2**2-sig3**2)+(1-sigsq)**2,
-# 		8*sig1*sig2 + 4*sig3*(1-sigsq),
-# 		8*sig1*sig3 - 4*sig2*(1-sigsq),
-# 		],
-# 		[
-# 		8*sig2*sig1 - 4*sig3*(1-sigsq),
-# 		4*(-sig1**2+sig2**2-sig3**2)+(1-sigsq)**2,
-# 		8*sig3*sig1 + 4*sig2*(1-sigsq),
-# 		],
-# 		[
-# 		8*sig3*sig1 + 4*sig2*(1-sigsq),
-# 		8*sig3*sig2 - 4*sig1*(1-sigsq),
-# 		4*(-sig1**2-sig2**2+sig3**2)+(1-sigsq)**2,
-# 		]
-# 		])/(1+sigsq)**2
-
-# def DCM2MRP(DCM):
-# 	from numpy import sqrt, array, trace
-
-# 	beta_0_sq = 0.25*(1 + trace(DCM))
-# 	beta_1_sq = 0.25*(1 + 2*DCM[1,1] - trace(DCM))
-# 	beta_2_sq = 0.25*(1 + 2*DCM[0,0] - trace(DCM))
-# 	beta_3_sq = 0.25*(1 + 2*DCM[2,2] - trace(DCM))
-
-# 	beta_0 = 0.5*sqrt(DCM[0,0] + DCM[1,1] + DCM[2,2] + 1)
-# 	beta_1 = (DCM[1,2]-DCM[2,1])/4*beta_0
-# 	beta_2 = (DCM[2,0]-DCM[0,2])/4*beta_0
-# 	beta_3 = (DCM[0,1]-DCM[1,0])/4*beta_0
-
-# 	sig1 = beta_1/(1+beta_0)
-# 	sig2 = beta_2/(1+beta_0)
-# 	sig3 = beta_3/(1+beta_0)
-
-# 	return array([sig1,sig2,sig3])
 
 
 
