@@ -39,7 +39,8 @@ import pdb
 import util
 
 
-print('Initializing')
+print('################## Initializing ##################')
+
 ###############################################################################
 #
 #	Create a spacecraft object to attach the camera to.
@@ -70,18 +71,17 @@ sc = bod.sc(
 #
 ###############################################################################
 
-#load tranmission curve for Canon 10D
-_10D = np.load('tc/10D.npz')
+#load tranmission curve for Canon 20D
+_20D = np.load('tc/20D.npz')
 tc = {}
-tc['lambda'] = _10D['x']
-tc['throughput'] = _10D['y']
+tc['lambda'] = _20D['x']
+tc['throughput'] = _20D['y']
 
 #load QE curve for Hubble Space Telecope Advanced Camera for Surveys SITe CCD
 ACS = np.load('qe/ACS.npz')
 qe = {}
 qe['lambda'] = ACS['x']
 qe['throughput'] = ACS['y']
-
 
 ###############################################################################
 #
@@ -105,7 +105,7 @@ msg = { 'bodies': [
 	'addStars': 1,'rmOcc': 0, 'addBod': 0, 'psf': 1, 
 	'raster': 1, 'photon': 1, 'dark': 1, 'read': 1, 'dt': 0.001}
 
-print('Creating small camera images')
+print('########## Creating small camera images ##########')
 
 ###############################################################################
 #
@@ -198,7 +198,7 @@ plt.xlabel('Pixel')
 plt.ylabel('Line')
 plt.title('Rasterized Star Image')
 
-print('Creating large camera images')
+print('########## Creating large camera images ##########')
 
 ###############################################################################
 #
@@ -260,7 +260,7 @@ plt.title('Rasterized Star Image')
 #	Initialize camera for slew images. 
 #
 ###############################################################################
-print('Creating slew images')
+print('############## Creating slew images ##############')
 
 msg = { 'bodies': [
 	bod.earth,
@@ -377,15 +377,12 @@ plt.title('0.1 Degree Yaw, Pitch, and Roll')
 plt.xlabel('Pixel')
 plt.ylabel('Line')
 
-
-plt.show()
-
 ###############################################################################
 #
 #	Initialize camera for animation. 
 #
 ###############################################################################
-print('Creating extended body animation (this one takes a a few minutes)')
+print('######## Creating extended body animation ########')
 
 #edit debug msg to ensure we include bodies
 msg['rmOcc'] = 1
@@ -417,7 +414,7 @@ bod.luna.r_eq *= 10
 bod.luna.r_pole *= 10
 #make earth and moon much much dimmer than nominal so we can still
 #see stars in final image
-bod.earth.albedo = 1e-6
+bod.earth.albedo = 3e-7
 bod.luna.albedo = 3e-7
 
 #container for animation frames
@@ -427,8 +424,10 @@ ims = []
 fig = plt.figure()
 
 #create frames for gif
-j = np.deg2rad(-60)
-for t in range(0,46):
+j = np.deg2rad(-30)
+for t in range(0,7):
+	print('############## Creating frame ' + str(t+1) + ' of 7 #############')
+
 	j += np.deg2rad(120/90)
 	i += np.deg2rad(4/90)
 	sc.attitudeDCM = util.rz(j)
@@ -450,7 +449,7 @@ for t in range(0,46):
 
 #create gif
 ani = animation.ArtistAnimation(fig, ims, interval=250, blit=True,repeat_delay=1000)
-plt.title('6 Hours in Geo')
+plt.title('1 Hour in Geo')
 plt.xlabel('Pixel')
 plt.ylabel('Line')
 plt.show()
